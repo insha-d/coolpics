@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Image to llustations</title>
+	<link rel="stylesheet"href={{ url_for('static', filename='fontawesome/css/all.min.css') }}> <!-- https://fontawesome.com/ -->
+	<link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet"> <!-- https://fonts.google.com/ -->
+	<link href={{ url_for('static', filename='css/magnific-popup.min.css') }}  rel="stylesheet">
+    <link href={{ url_for('static', filename='css/tooplate-style.css') }} rel="stylesheet">
+</head>
+<body>
+	<div id="logo">
+		<div>
+		<img class="header-logo-image" src={{ url_for('static', filename='img/logo.png') }} alt="Logo"></div>
+		<section class="tm-flex">
+					<a href="https://facebook.com" class="tm-social-link"><i class="fab fa-facebook"></i></a>
+					<a href="https://twitter.com" class="tm-social-link"><i class="fab fa-twitter"></i></a>
+					<a href="https://instagram.com/its_me_shibin_raj?igshid=NTE5MzUyOTU=" class="tm-social-link"><i class="fab fa-instagram"></i></a>
+				</section>
+	</div> 
+<div class="tm-gallery-section">
+			<ul class="filters-button-group tm-mb-40" style="display: flex;justify-content: center;">
+				<!-- <li><a href="#" data-filter=".illustration">Illustration</a></li> -->
+				<li><a href="#" data-filter=".sketch">Sketch</a></li>
+				<li><a href="#" data-filter=".cartoon">Cartoon</a></li>
+				<!-- <li><a href="#" data-filter=".drawing">Drawing</a></li> -->
+				<li><a href="#" data-filter=".painting">Painting</a></li>
+				<li><a href="#" data-filter=".bw">Black & White</a></li>
+				<li><a href="#" class="active" data-filter="*">Show All</a></li>
+			</ul>
+<div class="tm-gallery">	
+<div class="tm-gallery-item cartoon sketch painting bw">
+    <a href="{{ url_for('static', filename='uploads/'+sourceFile) }}">
+        <img src={{ url_for('static', filename='uploads/'+sourceFile) }} alt="Gallery item" class="img-fluid" />
+    </a>
+    <p>Orginal</p>
+</div>
+
+<div class="tm-gallery-item bw">
+    <a href="{{ url_for('static', filename='uploads/'+sourceFile.replace(".","_bw.")) }}">
+        <img src={{ url_for('static', filename='uploads/'+sourceFile.replace(".","_bw.")) }} alt="Gallery item" class="img-fluid" />
+    </a>
+    <p>Black and white</p>
+</div>
+
+<div class="tm-gallery-item sketch">
+    <a href="{{ url_for('static', filename='uploads/'+sourceFile.replace(".","_sketch.")) }}">
+        <img src={{ url_for('static', filename='uploads/'+sourceFile.replace(".","_sketch.")) }} alt="Gallery item" class="img-fluid" />
+    </a>
+    <p>Sketch</p>
+</div>
+
+<div class="tm-gallery-item painting">
+    <a href="{{ url_for('static', filename='uploads/'+sourceFile.replace(".","_oil.")) }}">
+        <img src={{ url_for('static', filename='uploads/'+sourceFile.replace(".","_oil.")) }} alt="Gallery item" class="img-fluid" />
+    </a>
+    <p>Oil Painting</p>
+</div>
+
+<div class="tm-gallery-item cartoon">
+    <a href="{{ url_for('static', filename='uploads/'+sourceFile.replace(".","_cartoon.")) }}">
+        <img src={{ url_for('static', filename='uploads/'+sourceFile.replace(".","_cartoon.")) }} alt="Gallery item" class="img-fluid" />
+    </a>
+    <p>Cartoon</p>
+</div>
+</div>
+		<footer class="tm-footer">
+			2023 PROJECT CT S6 <br>
+			NSS PTC PANDALAM
+		</footer>
+	</div>
+
+	<script src={{ url_for('static', filename="js/jquery.min.js") }}></script>
+	<script src={{ url_for('static', filename="js/imagesloaded.pkgd.min.js") }}></script>
+	<script src={{ url_for('static', filename="js/isotope.pkgd.min.js") }}></script>
+	<script src={{ url_for('static', filename="js/jquery.magnific-popup.min.js") }}></script>
+	<script>
+		$(function(){
+		  	// Init the image gallery
+		  	var $gallery = $(".tm-gallery").isotope({
+		    	itemSelector: ".tm-gallery-item",
+		    	layoutMode: "fitRows"
+		  	});
+		  
+		  	// Layout Isotope after each image loads
+		  	$gallery.imagesLoaded().progress(function() {
+		    	$gallery.isotope("layout");
+		  	});
+
+		  	$(".filters-button-group").on("click", "a", function(e) {
+		  		e.preventDefault();
+			    var filterValue = $(this).attr("data-filter");
+			    $gallery.isotope({ filter: filterValue });
+			    $('.filters-button-group a').removeClass('active');
+			    $(this).addClass('active');
+			});
+
+		  	// Magnific Pop up
+		  	$('.tm-gallery').magnificPopup({
+		  		delegate: 'a',
+			  	type: 'image',
+				  gallery: { enabled: true }
+			});
+		});
+	</script>
+</body>
+</html>

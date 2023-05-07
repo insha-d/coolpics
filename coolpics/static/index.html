@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Image to llustations</title>
+	<link rel="stylesheet" href="fontawesome/css/all.min.css"> <!-- https://fontawesome.com/ -->
+	<link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet"> <!-- https://fonts.google.com/ -->
+	<link href="css/magnific-popup.min.css" rel="stylesheet">
+    <link href="css/tooplate-style.css" rel="stylesheet">
+<!--
+
+Tooplate 2122 Nano Folio
+
+https://www.tooplate.com/view/2122-nano-folio
+
+-->
+</head>
+<body>
+	<!-- HEADER STUFF-->
+	<div id="logo">
+		<div>
+		<img class="header-logo-image" src="img\logo.png" alt="Logo"></div>
+		<section class="tm-flex">
+					<a href="https://facebook.com" class="tm-social-link"><i class="fab fa-facebook"></i></a>
+					<a href="https://twitter.com" class="tm-social-link"><i class="fab fa-twitter"></i></a>
+					<a href="https://instagram.com/its_me_shibin_raj?igshid=NTE5MzUyOTU=" class="tm-social-link"><i class="fab fa-instagram"></i></a>
+				</section>
+	</div> 
+
+	<div class="tm-container-fluid">
+		<div class="tm-gallery-section tm-mb-80">
+			<ul class="filters-button-group tm-mb-40">
+				<!-- <li><a href="#" data-filter=".illustration">Illustration</a></li> -->
+				<li><a href="#" data-filter=".sketch">Sketch</a></li>
+				<li><a href="#" data-filter=".cartoon">Cartoon</a></li>
+				<!-- <li><a href="#" data-filter=".drawing">Drawing</a></li> -->
+				<li><a href="#" data-filter=".painting">Painting</a></li>
+				<li><a href="#" data-filter=".bw">Black & White</a></li>
+				<li><a href="#" class="active" data-filter="*">Show All</a></li>
+			</ul>
+			<div class="tm-gallery">				
+				<div class="tm-gallery-item bw ">
+		            <a href="img/b&w.jpg">
+		            	<img src="img/b&w.jpg" alt="City Scape" class="img-fluid" />
+		            </a>
+		        </div>
+				<div class="tm-gallery-item cartoon">
+		            <a href="img/cartoon.jpg">
+		            	<img src="img/cartoon.jpg" alt="Beautiful Lady" class="img-fluid" />
+		            </a>
+		        </div>
+				<div class="tm-gallery-item painting">
+		            <a href="img/painting.jpg">
+		            	<img src="img/painting.jpg" alt="City over cloud" class="img-fluid" />
+		            </a>
+		        </div>
+		        <div class="tm-gallery-item sketch">
+		            <a href="img/sketch.jpg">
+		            	<img src="img/sketch.jpg" alt="Autumn Forest" class="img-fluid" />
+		            </a>
+		        </div>
+		</div> 
+<form action="/animate" method="post" enctype="multipart/form-data">
+	<div>
+	<input type="file" name="file" id="file"></div>
+	<div>
+	<input type="submit" value="Upload Image" name="submit"></div>
+	</form>
+				<section class="tm-about tm-mb-80 tm-p-50 tm-bgcolor-2 tm-border-rounded">
+			<div class="tm-about-header tm-flex-center">
+				<i class="fas fa-users fa-2x"></i>
+				<h2>About Us</h2>
+			</div>
+			<div class="tm-about-text">
+				<p class="tm-mb-40">Tricus is a startup that specializes in the development of software and hardware products for businesses and individuals. The company was founded by a team of experienced engineers and software developers with a passion for innovation and a desire to create products that solve real-world problems.Tricus offers a range of products and services designed to help businesses and individuals increase efficiency, streamline processes, and achieve their goals. The company's software products include custom business applications, mobile apps, web apps, and more. These software products are designed to be user-friendly and scalable, allowing businesses to adapt and grow as needed.
+
+</p>
+			</div>
+		</section>
+
+		<footer class="tm-footer">
+			2023 PROJECT CT S6 <br>
+			NSS PTC PANDALAM
+		</footer>
+	</div>
+
+	<script src="js/jquery.min.js"></script>
+	<script src="js/imagesloaded.pkgd.min.js"></script>
+	<script src="js/isotope.pkgd.min.js"></script>
+	<script src="js/jquery.magnific-popup.min.js"></script>
+	<script>
+		$(function(){
+		  	// Init the image gallery
+		  	var $gallery = $(".tm-gallery").isotope({
+		    	itemSelector: ".tm-gallery-item",
+		    	layoutMode: "fitRows"
+		  	});
+		  
+		  	// Layout Isotope after each image loads
+		  	$gallery.imagesLoaded().progress(function() {
+		    	$gallery.isotope("layout");
+		  	});
+
+		  	$(".filters-button-group").on("click", "a", function(e) {
+		  		e.preventDefault();
+			    var filterValue = $(this).attr("data-filter");
+			    $gallery.isotope({ filter: filterValue });
+			    $('.filters-button-group a').removeClass('active');
+			    $(this).addClass('active');
+			});
+
+		  	// Magnific Pop up
+		  	$('.tm-gallery').magnificPopup({
+		  		delegate: 'a',
+			  	type: 'image',
+				  gallery: { enabled: true }
+			});
+		});
+
+	</script>
+</body>
+</html>
